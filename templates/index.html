@@ -1,0 +1,85 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Potability Prediction</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <!-- Header -->
+    <h1>Water Potability Prediction</h1>
+
+    <!-- Navbar -->
+    <ul>
+        <li><a href="#prediction">Prediction</a></li>
+        <li><a href="#visualization">Visualization</a></li>
+    </ul>
+    <!-- Prediction Module -->
+    <div id="prediction">
+    <h1>Prediction</h1>
+
+        <form method="post">
+            <label for="input1"><b>pH</b> (Range: 0-14) :</label>
+        <input type="text" name="input1" required><br>
+
+        <label for="input2"><b>Hardness</b> (Range: 0-350) :</label>
+        <input type="text" name="input2" required><br>
+
+        <label for="input3"><b>Solids</b> (Range: 0-70000) :</label>
+        <input type="text" name="input3" required><br>
+
+        <label for="input4"><b>Chloramines</b> (Range: 0-14) :</label>
+        <input type="text" name="input4" required><br>
+
+        <label for="input5"><b>Sulphate</b> (Range: 0-500) :</label>
+        <input type="text" name="input5" required><br>
+
+        <label for="input6"><b>Conductivity</b> (Range: 0-800) :</label>
+        <input type="text" name="input6" required><br>
+
+        <label for="input7"><b>Organic Carbon</b> (Range: 0-30) :</label>
+        <input type="text" name="input7" required><br>
+
+        <label for="input8"><b>Trihalomethanes</b> (Range: 0-150) :</label>
+        <input type="text" name="input8" required><br>
+
+        <label for="input9"><b>Turbidity</b> (Range: 0-7) :</label>
+        <input type="text" name="input9" required><br>
+
+            <button type="submit">Submit</button>
+        </form>
+        <br/>
+        <!-- Displaying the result -->
+        <h2 class="result">Is the water potable?</h2>
+        {% if result %}
+            <h2 class="result">Result: {{ result }}</h2>
+        {% endif %}
+    </div>
+    <!-- Visualization Module -->
+    <div id="visualization">
+        <h1>Data Visualization</h1>
+        <div class="graphs">
+            <div class="graph">
+                <h2>Percentage of potable water</h2>
+                <img src="{{ url_for('static', filename='images/graph1.png') }}" height="300px" width="480px" alt="Graph 1">
+            </div>
+            <div class="graph">
+                <h2>Range of values</h2>
+                <img src="{{ url_for('static', filename='images/graph2.png') }}" height="300px" width="450px" alt="Graph 2">
+            </div>
+            <div class="graph">
+                <h2>Potable vs Not Potable input values</h2>
+                <img src="{{ url_for('static', filename='images/graph4.png') }}" height="300px" width="450px" alt="Graph 4">
+            </div>
+            <div class="graph">
+                <h2>Decision Tree</h2>
+                <img src="{{ url_for('static', filename='images/graph3.png') }}" height="300px" width="450px" alt="Graph 3">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
